@@ -95,6 +95,7 @@
     <nav class="main-nav" aria-label="Main">
       <ul>
         <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="contact.html" class="active">Contact</a></li>
@@ -155,11 +156,11 @@
           </div>
           <div class="form-field">
             <label for="f-desc">Tell us a little about your project <span class="required">*</span></label>
-            <textarea id="f-desc" rows="4" required name="job.description" placeholder="e.g. kitchen remodel, backyard sauna, whole-house renovation"></textarea>
+            <input id="f-desc" type="text" required name="job.description" placeholder="e.g. kitchen remodel, backyard sauna, whole-house renovation">
           </div>
           <div class="form-field">
             <label for="f-loc">What city or zip is your project in?</label>
-            <input id="f-loc" type="text" name="location.address" autocomplete="postal-code" placeholder="e.g. Rogers Park, or 60626">
+            <textarea id="f-loc" name="location.address" autocomplete="postal-code"></textarea>
           </div>
           <div class="form-field">
             <label for="f-src">How did you find us?</label>
@@ -190,43 +191,7 @@
           </div>
           <p class="form-reassure">We reply within two business days. No obligation, and we never share your info.</p>
         </form>
-        <p id="form-fallback" class="form-fallback" hidden>
-          Sorry &mdash; our form isn't loading right now. Please call
-          <a href="tel:+13125454924" data-cta="form-fallback">(312) 545-4924</a> or email
-          <a href="mailto:paroprojects312@gmail.com" data-cta="form-fallback">paroprojects312@gmail.com</a>
-          and we'll take it from there.
-        </p>
-        <script id="jobtread-embed" async src="https://app.jobtread.com/web-form.js"></script>
-        <script>
-        /* Safety net: if the JobTread embed is blocked, slow, or fails to bind, a
-           submit would otherwise reload the page and lose the lead silently. */
-        (function () {
-          var form = document.querySelector('[data-jobtread-web-form]');
-          var note = document.getElementById('form-fallback');
-          if (!form || !note) return;
-
-          function showFallback() {
-            if (!note.hidden) return;
-            note.hidden = false;
-            if (typeof gtag === 'function') {
-              gtag('event', 'form_unavailable', { page: location.pathname });
-            }
-          }
-
-          /* Listening on window means this runs after any handler bound to the form
-             itself, no matter which script registered first. */
-          window.addEventListener('submit', function (e) {
-            if (e.target !== form) return;
-            if (e.defaultPrevented) return; /* JobTread handled it */
-            e.preventDefault();
-            showFallback();
-            note.scrollIntoView({ block: 'center', behavior: 'smooth' });
-          });
-
-          var embed = document.getElementById('jobtread-embed');
-          if (embed) embed.addEventListener('error', showFallback);
-        })();
-        </script>
+        <script async src="https://app.jobtread.com/web-form.js"></script>
       </div>
 
     </div>
